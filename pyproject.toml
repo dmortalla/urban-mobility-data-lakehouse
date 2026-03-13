@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "urban_mobility_data_lakehouse"
+version = "0.1.0"
+description = "A medallion-style lakehouse pipeline for NYC taxi trip data using Python, PySpark, DuckDB, and local orchestration."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  { name = "Darrell Mortalla" }
+]
+license = { text = "MIT" }
+dependencies = [
+  "pandas>=2.2.0",
+  "pyarrow>=15.0.0",
+  "duckdb>=1.0.0",
+  "pyspark>=3.5.0",
+  "pyyaml>=6.0.1",
+  "python-dotenv>=1.0.1",
+  "requests>=2.31.0",
+  "pytest>=8.0.0"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  ".",
+  "src"
+]
+testpaths = [
+  "tests"
+]
+addopts = "-q"
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
+line_length = 88

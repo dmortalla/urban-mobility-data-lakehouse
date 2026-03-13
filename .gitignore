@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment
+.env
+
+# Logs
+logs/
+*.log
+
+# Data
+data/raw/*
+data/lake/*
+!data/raw/.gitkeep
+!data/lake/.gitkeep
+!data/lake/bronze/.gitkeep
+!data/lake/silver/.gitkeep
+!data/lake/gold/.gitkeep
+!data/sample/.gitkeep
+
+# DuckDB
+warehouse/*.duckdb
+warehouse/*.wal
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Test/cache
+.pytest_cache/
+.coverage
+htmlcov/

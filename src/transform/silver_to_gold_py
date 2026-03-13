@@ -1,0 +1,13 @@
+"""Gold transformation logic.
+
+This module will be expanded in later milestones.
+"""
+
+from __future__ import annotations
+
+
+def transform_silver_to_gold() -> None:
+    """Placeholder Gold transformation function."""
+    raise NotImplementedError(
+        "Silver-to-Gold transformation will be implemented later."
+    )
