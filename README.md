@@ -22,6 +22,7 @@ Raw transportation data is often too messy for direct analytics. A mobility anal
 This project solves that by implementing a local-first medallion architecture.
 
 ## Architecture
+
 High-level medallion architecture used by the pipeline:
 ```
 Raw NYC Taxi Data
@@ -36,6 +37,7 @@ Raw NYC Taxi Data
         ↓
    DuckDB Analytics Warehouse
 ```
+
 ## Tech Stack
 
 - Python
@@ -55,6 +57,34 @@ config/     runtime configuration
 sql/        Gold mart SQL
 tests/      validation and unit tests
 docs/       architecture notes and screenshots
+```
+
+## Reproducibility
+
+The entire pipeline can be reproduced locally using the provided scripts.
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/YOUR_USERNAME/urban-mobility-data-lakehouse.git
+cd urban-mobility-data-lakehouse
+
+# 2. Create and activate the Python environment
+conda create -n lakehouse python=3.11
+conda activate lakehouse
+pip install -r requirements.txt
+
+# 3. Download the raw dataset
+python -m scripts.download_data
+
+# 4. Run the medallion pipeline (Bronze → Silver → Gold)
+python -m scripts.run_pipeline
+
+# 5. Load the Gold analytics tables into DuckDB
+python -m scripts.load_duckdb
+
+# 6. Run analytics queries
+duckdb data/warehouse/analytics.duckdb
+.read sql/example_queries.sql
 ```
 
 ## Completed Milestones
