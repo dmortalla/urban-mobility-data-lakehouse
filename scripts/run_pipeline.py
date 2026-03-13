@@ -10,6 +10,7 @@ from src.config import load_yaml_config, validate_pipeline_config
 from src.extract.ingest_taxi_data import ingest_raw_parquet_to_bronze
 from src.logging_utils import get_logger, setup_logging
 from src.silver.write_silver_table import write_silver_table
+from src.transform.silver_to_gold import transform_silver_to_gold
 
 PIPELINE_CONFIG_PATH = "config/pipeline.yaml"
 LOGGING_CONFIG_PATH = "config/logging.yaml"
@@ -17,7 +18,7 @@ LOGGING_CONFIG_PATH = "config/logging.yaml"
 
 def main() -> None:
     """
-    Run the Raw → Bronze → Silver pipeline.
+    Run the Raw → Bronze → Silver → Gold pipeline.
     """
     setup_logging(LOGGING_CONFIG_PATH)
     logger = get_logger(__name__)
@@ -28,13 +29,12 @@ def main() -> None:
     raw_data_dir = Path(config["paths"]["raw_data"])
     bronze_data_dir = Path(config["paths"]["bronze_data"])
     silver_data_dir = Path(config["paths"]["silver_data"])
+    gold_data_dir = Path(config["paths"]["gold_data"])
 
     logger.info("Urban Mobility Data Lakehouse pipeline initialized.")
 
-    # ---------- Bronze Stage ----------
-
+    # Bronze
     logger.info("Starting Bronze ingestion pipeline.")
-
     raw_files = sorted(raw_data_dir.glob("*.parquet"))
 
     if not raw_files:
@@ -49,26 +49,38 @@ def main() -> None:
             raw_file_path=raw_file,
             bronze_output_dir=bronze_data_dir,
         )
-
         bronze_files.append(bronze_path)
-
         logger.info("Bronze file written to %s", bronze_path)
 
     logger.info("Bronze ingestion pipeline completed successfully.")
 
-    # ---------- Silver Stage ----------
-
+    # Silver
     logger.info("Starting Silver transformation pipeline.")
+    silver_files = []
 
     for bronze_file in bronze_files:
         silver_path = write_silver_table(
             bronze_file_path=bronze_file,
             silver_output_dir=silver_data_dir,
         )
-
+        silver_files.append(silver_path)
         logger.info("Silver file written to %s", silver_path)
 
     logger.info("Silver pipeline completed successfully.")
+
+    # Gold
+    logger.info("Starting Gold transformation pipeline.")
+
+    for silver_file in silver_files:
+        gold_outputs = transform_silver_to_gold(
+            silver_file_path=silver_file,
+            gold_output_dir=gold_data_dir,
+        )
+
+        for table_name, output_path in gold_outputs.items():
+            logger.info("Gold table %s written to %s", table_name, output_path)
+
+    logger.info("Gold pipeline completed successfully.")
 
 
 if __name__ == "__main__":

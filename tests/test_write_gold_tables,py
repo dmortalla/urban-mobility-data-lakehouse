@@ -1,0 +1,38 @@
+""""
+Tests for Gold table writing.
+"""
+
+from __future__ import annotations
+
+import pandas as pd
+
+from src.gold.write_gold_tables import write_gold_tables
+
+
+def test_write_gold_tables_creates_output_files(tmp_path) -> None:
+    """
+    Ensure Gold parquet files are written successfully.
+    """
+    silver_file = tmp_path / "silver_test.parquet"
+
+    df = pd.DataFrame(
+        {
+            "pickup_date": ["2024-01-01", "2024-01-01", "2024-01-02"],
+            "pickup_hour": [8, 9, 8],
+            "trip_distance": [2.0, 3.0, 4.0],
+            "fare_amount": [10.0, 15.0, 20.0],
+            "total_amount": [12.0, 18.0, 25.0],
+            "payment_type": [1, 2, 1],
+        }
+    )
+
+    df.to_parquet(silver_file, index=False)
+
+    output_paths = write_gold_tables(
+        silver_file_path=silver_file,
+        gold_output_dir=tmp_path,
+    )
+
+    assert output_paths["daily_trip_summary"].exists()
+    assert output_paths["hourly_demand_summary"].exists()
+    assert output_paths["payment_type_revenue"].exists()
