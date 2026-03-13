@@ -4,7 +4,7 @@
 ![Status](https://img.shields.io/badge/status-in--progress-yellow)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-A production-style data engineering project that ingests, validates, transforms, and serves NYC taxi trip data through a medallion-style lakehouse pipeline using Python, PySpark, DuckDB, and local orchestration.
+A production-style data engineering project that ingests, validates, transforms, and serves NYC taxi trip data through a medallion-style lakehouse pipeline using Python, Pandas, Parquet, DuckDB, and local orchestration.
 
 ## Overview
 
