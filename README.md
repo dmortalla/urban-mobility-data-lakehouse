@@ -21,6 +21,29 @@ Raw transportation data is often too messy for direct analytics. A mobility anal
 
 This project solves that by implementing a local-first medallion architecture.
 
+## Key Features
+
+- **Medallion Architecture**  
+  Implements a Bronze → Silver → Gold data model to separate raw ingestion, cleaned datasets, and analytics-ready aggregates.
+
+- **Parquet-Based Lakehouse Storage**  
+  Uses columnar Parquet files to support efficient analytics and scalable storage.
+
+- **DuckDB Analytics Warehouse**  
+  Gold tables are loaded into DuckDB to enable fast SQL queries and local OLAP-style analytics.
+
+- **Config-Driven Pipeline Execution**  
+  YAML configuration files control runtime parameters and dataset definitions.
+
+- **Modular ETL Design**  
+  Pipeline stages are separated into extract, transform, validate, and warehouse modules.
+
+- **Automated Testing**  
+  Unit tests validate schema integrity, transformations, and warehouse loading logic.
+
+- **Reproducible Data Pipeline**  
+  The entire pipeline can be reproduced locally from raw ingestion to analytics queries using the provided scripts.
+
 ## Architecture
 
 High-level medallion architecture used by the pipeline:
