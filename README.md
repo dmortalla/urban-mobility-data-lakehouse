@@ -41,7 +41,7 @@ Raw NYC Taxi Data
 - Pandas
 - DuckDB (analytics warehouse)
 - Parquet (lakehouse storage format)
-- YAML configuration
+- YAML (pipeline configuration)
 - Pytest (testing framework)
 - Modular ETL pipeline architecture
 
