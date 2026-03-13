@@ -22,7 +22,7 @@ Raw transportation data is often too messy for direct analytics. A mobility anal
 This project solves that by implementing a local-first medallion architecture.
 
 ## Architecture
-'''
+```
 Raw NYC Taxi Data
         ↓
    Raw Landing
@@ -34,7 +34,7 @@ Raw NYC Taxi Data
      Gold Analytics Tables
         ↓
    DuckDB Analytics Warehouse
-'''
+```
 ## Tech Stack
 
 - Python
