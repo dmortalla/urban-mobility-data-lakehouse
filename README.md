@@ -37,13 +37,12 @@ Raw NYC Taxi Data
 
 ## Tech Stack
 
-* Python
-* PySpark
-* DuckDB
-* Pandas
-* PyArrow
-* YAML configuration
-* Pytest
+- Python
+- Pandas
+- DuckDB (analytics warehouse)
+- Parquet (lakehouse storage format)
+- YAML configuration
+- Pytest (testing framework)
 
 ## Repository Structure
 
