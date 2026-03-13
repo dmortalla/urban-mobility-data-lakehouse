@@ -43,6 +43,7 @@ Raw NYC Taxi Data
 - Parquet (lakehouse storage format)
 - YAML configuration
 - Pytest (testing framework)
+- Modular ETL pipeline architecture
 
 ## Repository Structure
 
