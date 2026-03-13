@@ -33,6 +33,10 @@ data/lake/*
 warehouse/*.duckdb
 warehouse/*.wal
 
+# DuckDB warehouse files
+data/warehouse/*.duckdb
+data/warehouse/*.db
+
 # OS/editor
 .DS_Store
 Thumbs.db
