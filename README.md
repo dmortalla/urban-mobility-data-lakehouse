@@ -22,6 +22,7 @@ Raw transportation data is often too messy for direct analytics. A mobility anal
 This project solves that by implementing a local-first medallion architecture.
 
 ## Architecture
+High-level medallion architecture used by the pipeline:
 ```
 Raw NYC Taxi Data
         ↓
