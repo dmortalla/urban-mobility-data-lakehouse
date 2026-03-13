@@ -23,6 +23,9 @@ def load_gold_tables_into_duckdb(
     gold_dir = Path(gold_dir)
     db_path = Path(db_path)
 
+    # ensure directory exists
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+
     con = duckdb.connect(str(db_path))
 
     parquet_files = sorted(gold_dir.glob("*.parquet"))

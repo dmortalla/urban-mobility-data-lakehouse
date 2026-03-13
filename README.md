@@ -1,4 +1,3 @@
-
 # Urban Mobility Data Lakehouse
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
@@ -24,9 +23,17 @@ This project solves that by implementing a local-first medallion architecture.
 
 ## Architecture
 
-```text
-Raw Data -> Bronze -> Silver -> Gold -> DuckDB Analytics Layer
-```
+Raw NYC Taxi Data
+        ↓
+   Raw Landing
+        ↓
+     Bronze Layer
+        ↓
+     Silver Layer
+        ↓
+     Gold Analytics Tables
+        ↓
+   DuckDB Analytics Warehouse
 
 ## Tech Stack
 
@@ -49,19 +56,32 @@ tests/      validation and unit tests
 docs/       architecture notes and screenshots
 ```
 
-## Current Milestone
+## Completed Milestones
 
-Milestone 1: Project scaffolding and environment setup.
+✔ **Milestone 1 — Project Scaffolding**
+Repository structure, configuration system, and development environment.
 
-Included in this milestone:
+✔ **Milestone 2 — Bronze Data Ingestion**
+Download NYC taxi parquet datasets and ingest them into the Bronze layer.
 
-* repo structure
-* configuration loading
-* logging setup
-* bootstrap script
-* raw data download script
-* starter tests
-* placeholder pipeline modules
+✔ **Milestone 3 — Silver Data Transformation**
+Clean and standardize Bronze data to create analytics-ready Silver tables.
+
+✔ **Milestone 4 — Gold Analytics Layer**
+Generate aggregated business tables including daily demand, hourly demand, and payment-type revenue.
+
+✔ **Milestone 5 — DuckDB Analytics Warehouse**
+Load Gold tables into DuckDB to enable SQL-based analytics.
+
+✔ **Milestone 6 — Repository Polish**
+Documentation improvements, example SQL queries, architecture explanation, and project presentation.
+
+## Project Status
+
+✔ Pipeline implemented
+✔ Tests passing
+✔ DuckDB analytics warehouse available
+✔ Example SQL queries included
 
 ## How to Run
 
