@@ -12,7 +12,7 @@ ORDER BY pickup_date;
 -- Total revenue per day
 SELECT
     pickup_date,
-    SUM(total_revenue) AS revenue
+    SUM(total_revenue) AS total_daily_revenue
 FROM daily_trip_summary_silver_bronze_yellow_tripdata_2024_01
 GROUP BY pickup_date
 ORDER BY pickup_date;
