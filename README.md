@@ -51,12 +51,12 @@ Raw NYC Taxi Data
 ## Repository Structure
 
 ```text
-src/        application logic
-scripts/    entry-point scripts
-config/     runtime configuration
-sql/        Gold mart SQL
-tests/      validation and unit tests
-docs/       architecture notes and screenshots
+src/       pipeline and transformation logic
+scripts/   pipeline entry points
+config/    runtime configuration files
+sql/       analytics queries for DuckDB
+tests/     unit and validation tests
+docs/      architecture notes and screenshots
 ```
 
 ## Reproducibility
@@ -65,7 +65,7 @@ The entire pipeline can be reproduced locally using the provided scripts.
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/urban-mobility-data-lakehouse.git
+git clone https://github.com/dmortalla/urban-mobility-data-lakehouse.git
 cd urban-mobility-data-lakehouse
 
 # 2. Create and activate the Python environment
