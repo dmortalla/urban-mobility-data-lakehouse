@@ -1,7 +1,7 @@
 # Urban Mobility Data Lakehouse
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
-![status](https://img.shields.io/badge/status-production-ready-brightgreen)
+![status](https://img.shields.io/badge/status-complete-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 A production-style data engineering project that ingests, validates, transforms, and serves NYC taxi trip data through a medallion-style lakehouse pipeline using Python, Pandas, Parquet, DuckDB, and local orchestration.
